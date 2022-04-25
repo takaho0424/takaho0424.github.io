@@ -1,73 +1,150 @@
-/* common */
+/* 文字化け阻止 */
+@charset "uft-8";
+
+/* border範囲確認用コード */
+/* border: 2px solid blue; */
+
+
 
 body {
-  margin: 0;
+  margin: 0;/* 一番外の領域を排除 */
+  font-family: sans-serif;/* フォント指定する */
 }
 
-img {
-  vertical-align: bottom;
-}
-
-h1,
-h2,
-p {
-  margin: 0;
-}
-
-/* header */
+/* -------------------header内のCSS-------------------------- */
 
 header {
-  background: #efefef;
+  display: flex;/* flexboxを使いたいのでdisplayプロパティを使う */
+  padding: 0 20px;/* 左右に余白を付ける */
 }
 
-header .container {
-  width: 400px;
-  margin: 0 auto;
-  padding: 32px 0;
-  display: flex;
-  align-items: center;
+header h1 {/* headerの中のh1 */
+  margin: 0;
+  font-size: 64px;
+  line-height: 64px;/* 上下に余白を付ける */
+  margin-top: 10px;
 }
 
-header .container div + div {
-  margin-left: 32px;
+.smart-menu {
+  margin-left: auto;/* ロゴとアイコンを左右に配置 */
 }
 
-header h1 {
-  font-weight: normal;
-  font-size: 24px;
+.smart-menu #open {
+  font-size: 50px;
+  line-height: 64px;
+  cursor: pointer;/* クリックできることが分かりやすいようにcursorプロパティも設定 */
 }
 
-header ul {
-  list-style: none;
+.smart-menu #open.hide {
+    display: none;/* このアイコンにはアニメーションなどは設定しない */
+  }
+
+.overlay {
+  position: fixed;/* 半透明の白で固定表示 */
+  top: 0;/* top bottom right left をそれぞれ0にし全画面で配置 */
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  text-align: center;/* メニューを真ん中に表示 */
+  padding: 64px;
+  opacity: 0;/* overlayは最初非表示なので、透明にする */
+  pointer-events: none;/* pointer系のイベントは無効化されるので、その下の要素が選択できるようになる */
+  transition: opacity .6s;/* opacity が徐々に変化するようにフワッとアニメーションを追加 */
+}
+
+.overlay.show {
+  opacity: 1;/* overlayのshowは透明になっているので、透明じゃなくす */
+  pointer-events: auto;/* showクラスが付いたら、pointer-eventsを元に戻したいので、規定値であるautoにする */
+}
+
+.overlay #close {
+  position: absolute;/* 絶対配置 */
+  top: 16px;
+  right: 16px;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.overlay ul {
+  list-style-type: none;/* 先頭の黒丸を排除 */
   margin: 0;
   padding: 0;
-  display: flex;
 }
 
-header ul li + li {
-  margin-left: 8px;
+.overlay li {
+  border: 2px solid rgb(195, 195, 199);
+  margin-top: 24px;
+  opacity: 0;
+  transform: translateY(16px);/* 下から現れるようにする→[1] */
+  transition: opacity .3s, transform .3s;/* opacityとtransformに対してそれぞれ0.3秒くらいでアニメーションさせる */
 }
 
-header .icon {
-  border-radius: 50%;
+/* [1]その上でshowクラスが付いたら、表示され、元の位置に戻るようにしたいので、opacityを1にしてあげてtransformをnoneにし下から上に移動させる */
+.overlay.show li {
+  opacity: 1;
+  transform: none;
 }
 
-/* main */
-
-main .container {
-  width: 400px;
-  margin: 0 auto;
+/* それぞれのアイテムが順番に表示されるようにしたいので、それぞれにdelayを付ける */
+/* overlayにshowがついたとき、liの1番目に対して、transition-delayを設定 */
+.overlay.show li:nth-child(1) {
+  transition-delay: .1s;
 }
 
-main h1 {
+.overlay.show li:nth-child(2) {
+  transition-delay: .2s;
+}
+
+.overlay.show li:nth-child(3) {
+  transition-delay: .3s;
+}
+
+.overlay.show li:nth-child(4) {
+  transition-delay: .4s;
+}
+
+.pc-menu {
+  display: none;/* ブラウザを狭めた時に表示させない */
+  margin: 0;
+  margin-right: 10px;
+  margin-top: 50px;
+}
+
+a {
+  text-decoration: none;/* 下線を消す */
+}
+
+.overlay nav a {
+  display: block;/* テキストの周辺もリンクにする */
+  border: 2px solid rgb(195, 195, 199);
+}
+
+.overlay a:hover {
+  background: #f2f2f2;
+}
+
+.main-img {
+  padding-top: 50px;
+  width:100%;/* 縦横比を維持しながら横幅めいっぱい */
+}
+
+/* -------------------header内のCSS-------------------------- */
+
+
+
+
+
+/* -------------------main内のCSS-------------------------- */
+
+
+main  {
   font-size: 24px;
-  font-weight: normal;
   text-align: center;
-  padding: 60px 0;
+  padding: 40px 0;
 }
 
 main h2 {
-  font-weight: normal;
   font-size: 20px;
   margin-top: 16px;
 }
@@ -75,8 +152,81 @@ main h2 {
 main p {
   line-height: 1.8;
   margin-top: 16px;
+  padding: 0 20px;
 }
 
 main section + section {
   margin-top: 60px;
 }
+
+.profile img {
+  border-radius: 50%;
+}
+
+.profile {
+  border-bottom: 2px solid rgb(166, 166, 166);
+}
+
+.skill {
+  border-bottom: 2px solid rgb(166, 166, 166);
+}
+
+.activity {
+  border-bottom: 2px solid rgb(166, 166, 166);
+}
+
+.skill img {
+  border: 2px solid blue;
+}
+
+.skill p {
+  font-size: 15px;
+}
+
+span {
+  display: block;
+  text-align: left;
+}
+
+.activity section {
+  display: flex;
+  margin-bottom: 60px;
+}
+
+.activity section:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.activity img{
+  display: flex;/* flexboxを使いたいのでdisplayプロパティを使う */
+  padding: 0 30px;/* 左右に余白を付ける */
+}
+
+.works img {
+  border: 2px solid blue;
+}
+
+.works p {
+  font-size: 15px;
+}
+
+/* -------------------main内のCSS-------------------------- */
+
+
+
+
+
+/* -------------------footer内のCSS-------------------------- */
+
+footer {
+  padding: 60px 0;
+  text-align: center;
+  color: #aaa;
+  background-color: aliceblue;
+}
+
+.url samall{
+  margin-left: auto;/* 右に寄せる */
+}
+
+/* -------------------header内のCSS-------------------------- */

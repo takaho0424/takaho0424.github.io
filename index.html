@@ -1,63 +1,197 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>池本嵩北のポートフォリオサイト</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <link rel="icon" href="img/favicon.png">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
   <header>
-    <div class="container">
-      <div>
-        <img
-          src="img/takaho.jpg"
-          alt="池本嵩北のアイコン"
-          width="140"
-          height="170"
-          class="icon">
-      </div>
-      <div>
-        <h1>池本嵩北</h1>
-        <p>山梨大学</p>
-        <p>工学部メカトロニクス工学科4年</p>
-      </div>
+    <!-- flexboxで左右に配置したいのでdivを用意 -->
+    <div class="portfolio">
+      <h1>My Portfolio</h1>
+    </div>
+
+    <div class="pc-menu">
+      <nav>
+        <ul>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#skill">Skill</a></li>
+          <li><a href="#activity">Activity</a></li>
+          <li><a href="#works">Works</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="smart-menu">
+      <span class="material-icons" id="open">menu</span><!-- javascriptでクリックイベント設定していくのでopenというidを設定 -->
     </div>
   </header>
 
+  <div class="overlay">
+    <span class="material-icons" id="close">close</span>
+    <nav><!--menuはnav 要素なのでnavタグを書いてあげて、中にリストでメニューを表現-->
+      <ul id="menu">
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#skill">Skill</a></li>
+        <li><a href="#activity">Activity</a></li>
+        <li><a href="#works">Works</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="top-wrapper">
+    <img class="main-img" src="img/img1.png">
+  </div>
+
   <main>
     <div class="container">
-      <h1>WORKS</h1>
-      <section>
-        <img
-          src="img/work1.png"
-          alt="勇者ゲーム"
-          width="400"
-          height="225">
-        <h2>勇者ゲーム</h2>
-        <p>すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。</p>
-      </section>
-      <section>
-        <img
-          src="img/work2.png"
-          alt="宝探しゲーム"
-          width="400"
-          height="225">
-        <h2>宝探しゲーム</h2>
-        <p>すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。</p>
-      </section>
-      <section>
-        <img
-          src="img/work3.png"
-          alt="神経衰弱"
-          width="400"
-          height="225">
-        <h2>神経衰弱</h2>
-        <p>すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。すごいゲームです。</p>
-      </section>
+      <div class="profile">
+        <h1 id="profile">Profile</h1>
+        <section>
+          <img src="img/takaho.jpg"
+             art="顔写真"
+             width="240px"
+             height="300px"
+          >
+          <h2>生年月日：2000年4月24日　性別：男</h2>
+          <h2>大学名：山梨大学工学部メカトロニクス工学科</h2>
+          <h2>趣味：アニメ鑑賞、友人との散歩、サウナ、バスケ</h2>
+          <h2>好きなアニメ：マクロス、よう実、新世界より</h2>
+        </section>
+      </div>
+
+
+      <div class="skill">
+        <h1 id="skill">Skill</h1>
+        <section>
+          <img src="img/img2.jpg"
+             art="HTML"
+             width="300px"
+             height="200px"
+          >
+          <img src="img/img3.jpg"
+             art="C++"
+             width="300px"
+             height="200px"
+          >
+          <h2>使用言語：C++, HTML, CSS, JavaScript</h2>
+          <h2>開発環境：Visial Studio, Atmel Studio, VS Code, GitHub</h2>
+          <span>【C++で行えること】</span>
+          <p>
+            C言語のデータ型,データ構造とアルゴリズム,手続き表現の基本とプログラムをコーディングするのに必要とされる
+            知識と応用技術があります。C++を使ってロボットも作成したことがあるのでよろしければ<a href="#work">Work&PR</a>から拝見してください。
+          </p>
+          <p>
+            （具体例）関数、配列、変数コープ、ポインタ、メモリ、スタック＆キュー、ファイルの入出力、再帰、ソート
+          </p>
+
+          <span>【HTML＆CSSで行えること】</span>
+          <p>
+            ウェブページを作るために必要な基礎的な文法、セレクターを使って要素を柔軟に指定するための方法、ウェブページのレイアウトに広く使われている、フレックスボックスの使い基本的な操作やデバイスに合わせたレスポンシブデザインが可能です。HTML＆CSS＆JavaScriptを使って現在表示されているポートフォリオを作成したのでよろしければ<a href="#work">Work&PR</a>から詳しく拝見してください。
+          </p>
+          <p>
+            （具体例）外部サイトへのリンク、文書の構造をマークアップ、 デベロッパーツール、クラスセレクター、ボックスモデル、displayプロパティ、 flexプロパティ、レスポンシブウェブデザイン、ポートフォリオサイト作成
+          </p>
+
+          <span>【JavaScriptで行えること】</span>
+          <p>
+            ウェブページに動きを値ける際にメニューバーの箇所でのアニメーションを付ける事ができます。本格的な動きやウェブサービスを作れるように現在勉強中です。
+          </p>
+          <p>
+            （具体例）マテリアルアイコンの導入、メニューアイコンの作成、クローズアイコンの作成、クリックイベントの作成、メニューのアニメーション
+          </p>
+
+        </section>
+      </div>
+
+      <div class="activity">
+        <h1 id="activity">Activity</h1>
+          <section>
+            <div class="pic">
+              <img src="img/img4.jpg"
+                width="300px"
+                height="200px">
+            </div>
+            <div class="desc">
+              <p>【中学時代】漫画：スラムダンク、あひるの空を見たきっかけで男子バスケットボール部に所属しバスケットボールの魅力にはまる。監督が初心者ながらも自分から知人のバスケ経験者にコーチを頼み結果地区大会優勝を果たす。</p>
+            </div>
+          </section>
+          <section>
+            <div class="pic">
+              <img src="img/img5.jpg"
+                width="300px"
+                height="200px">
+            </div>
+            <div class="desc">
+              <p>【高校時代】高校でもバスケットボールに所属し、高校生になり部としてチームとしての一体感も強くなりチームで活動する重要性に気づけた。試合に出れない日や骨折してボールに触れられない時間が続いたがそんな中でもめげず自身にできることをやり続けスターティングメンバーへ。</p>
+            </div>
+          </section>
+          <section>
+            <div class="pic">
+              <img src="img/img6.jpg"
+                width="300px"
+                height="200px">
+            </div>
+            <div class="desc">
+              <p>【部活動での役割】ポジションはPG(ポイントガード)でチームの司令塔として攻守に試合を読み、チームを牽引し、的確なパス配給で味方を操作しフォーメーションの指示をし、劣勢な場面でチームメイトを落ち着かせ勝利へ導く。</p>
+            </div>
+          </section>
+          <section>
+            <div class="pic">
+              <img src="img/img7.jpg"
+                width="200px"
+                height="300px">
+            </div>
+            <div class="desc">
+              <p>【大学時代】新しいことを始めたい、ここでしかできないことをやりたいという思いでアイスホッケー部に所属。最初は氷上に立つだけで苦労をしていたが練習を重ね、スターティングメンバーとして活躍できるところまで成長できた。</p>
+            </div>
+        </section>
+      </div>
+
+      <div class="works">
+        <h1 id="works">Works</h1>
+          <section>
+            <img src="img/img8.jpg"
+            art="HTML"
+            width="300px"
+            height="200px"
+         >
+         <img src="img/img9.png"
+            art="C++"
+            width="300px"
+            height="200px"
+         >
+          <p>
+            C++を使用してAteml Studioにてライントレースロボットを作成しました。
+          </p>
+          <p>
+            HTMLとCSSとJavaScriptを使用してVS Codeにてポートフォリオ作成を行いました。
+          </p>
+          <p>
+            詳しい説明は<a href="https://takaho0424.github.io/MyWorksSite/">こちら</a>からよろしくお願いします。
+          </p>
+        </section>
+      </div>
     </div>
-  </main>
+   </main>
+
+
+  <footer>
+    <h1>Contact</h1>
+    <p>Tel:070-2229-0424</p>
+    <p>E-mail:takaho0424@icloud.com</p>
+  </footer>
+  <footer>
+      <small>(c) takaho0424.github.io</small>
+  </footer>
+
+  <!-- アイコンをクリックしたらoverlayが表示されるようJavaScript で操作したいのでbodyの閉じタグの直前でscriptを読み込む -->
+  <script src="js/main.js"></script>
 </body>
 </html>
