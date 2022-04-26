@@ -1,4 +1,5 @@
 @media (min-width: 800px) {
+
   .pc-menu {
     display: block;/* ブラウザを広げた時に表示させる */
     margin-left: auto;/* 右に寄せる */
@@ -44,5 +45,18 @@
      text-align: center; 
      margin: 0 auto;
   }
+
+  .profile h2{
+    margin: 0 30px;
+    margin-bottom: 30px;
+  }
+
+.activity p{
+  margin-top: 0;
+}
+
+.activity span {
+  margin-top: 10px;
+}
 
 }
